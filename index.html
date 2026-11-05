@@ -58,7 +58,12 @@ section h2{font-size:clamp(26px,4vw,32px);margin-bottom:6px}
 .lead{color:var(--muted);margin:0 0 28px;max-width:680px}
 
 /* Tarjetas de proyecto */
-.project{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:22px}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.project{display:flex;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.project:not(.wide) figure img{height:230px;object-fit:contain;background:#fff}
+.project.wide{grid-column:1/-1;display:grid;grid-template-columns:1.15fr 1fr;gap:28px}
+.project:not(.wide) .plinks{margin-top:auto}
+.project:not(.wide)>div{display:flex;flex-direction:column;flex:1}
 .project figure{margin:0}
 .project figure img{border-radius:10px;border:1px solid var(--line);width:100%;height:auto}
 .project figcaption{font-size:13px;color:var(--muted);margin-top:6px}
@@ -69,7 +74,9 @@ section h2{font-size:clamp(26px,4vw,32px);margin-bottom:6px}
 .result{background:var(--accent-soft);border-radius:10px;padding:12px 14px;margin:12px 0 16px}
 .result strong{font-size:20px;font-family:"Source Serif 4",serif}
 .plinks{display:flex;flex-wrap:wrap;gap:8px}
-.plinks a{font-size:14px;font-weight:600;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--teal);background:var(--bg)}
+.plinks a{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--teal);background:var(--bg)}
+.plinks svg,.vcard .yt svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+.vcard .yt{display:inline-flex;align-items:center;gap:6px}
 .plinks a:hover{border-color:var(--accent);color:var(--accent)}
 .tools{font-size:13px;color:var(--muted);margin-top:12px}
 
@@ -116,7 +123,9 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   .hero .wrap{grid-template-columns:1fr;gap:18px;text-align:left}
   .photo{width:120px;height:120px}
   .photo.ph{font-size:40px}
-  .project{grid-template-columns:1fr;padding:16px;gap:16px}
+  .pgrid{grid-template-columns:1fr}
+  .project,.project.wide{grid-template-columns:1fr;padding:16px;gap:16px}
+  .project:not(.wide) figure img{height:auto}
   .videos,.grid,.conf{grid-template-columns:1fr}
   .demo iframe{height:520px}
   .nav ul{gap:14px}
@@ -170,7 +179,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
     <h2>Proyectos</h2>
     <p class="lead">Tres preguntas sobre territorio y conflicto, respondidas con datos oficiales y código que cualquiera puede revisar.</p>
 
-    <article class="project">
+    <div class="pgrid">
+    <article class="project wide">
       <figure>
         <a href="https://roddyhuarhua-hub.github.io/Data-Science-Python/" target="_blank" rel="noopener"><img src="images/conflictos.jpg" alt="Mapa de conflictos socioambientales por departamento, ranking, actividad y procesos de diálogo" loading="lazy" width="1200" height="984"></a>
         <figcaption>Dashboard interactivo: mapa, ranking, actividad y diálogo.</figcaption>
@@ -182,10 +192,10 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <p class="qa">Convertí 141 reportes mensuales de la Defensoría del Pueblo en una base de 28 166 filas, validada contra los totales oficiales (diferencia mediana: 0 casos).</p>
         <div class="result"><strong>62 %</strong> de los conflictos socioambientales está ligado a la minería, y por cada caso resuelto aparecen dos o tres nuevos (597 nuevos frente a 242 resueltos).</div>
         <div class="plinks">
-          <a href="https://roddyhuarhua-hub.github.io/Data-Science-Python/" target="_blank" rel="noopener">Ver dashboard</a>
-          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-3/tarea_3" target="_blank" rel="noopener">Código</a>
-          <a href="#videos">Reel</a>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7521305573431099392/" target="_blank" rel="noopener">Post en LinkedIn</a>
+          <a href="https://roddyhuarhua-hub.github.io/Data-Science-Python/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2v16h16v2H3V3zm4 10h3v5H7v-5zm5-6h3v11h-3V7zm5 3h3v8h-3v-8z"/></svg>Ver dashboard</a>
+          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-3/tarea_3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código</a>
+          <a href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Reel</a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7521305573431099392/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Post en LinkedIn</a>
         </div>
         <p class="tools">Python · pandas · extracción de PDF · Plotly · GitHub Pages</p>
       </div>
@@ -203,9 +213,9 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <p class="qa">Construí un agente de Claude Code con un servidor MCP propio sobre las series del BCRP y tres skills que limpian, grafican y mapean la ENAHO 2024. La pobreza oficial (27,6 %) se replica exactamente.</p>
         <div class="result">Los cinco mayores productores de cobre tienen <strong>19,7 %</strong> de pobreza frente a <strong>28,5 %</strong> del resto del país. Pero la ventaja no es pareja: Apurímac sigue en 24 % y Cajamarca, aurífera, en 45 %.</div>
         <div class="plinks">
-          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/blob/tarea-4-agente/tarea_4/informes/informe_final.md" target="_blank" rel="noopener">Informe</a>
-          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-4-agente/tarea_4" target="_blank" rel="noopener">Código</a>
-          <a href="https://github.com/roddyhuarhua-hub/enaho-skills" target="_blank" rel="noopener">Skills ENAHO</a>
+          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/blob/tarea-4-agente/tarea_4/informes/informe_final.md" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5zM8 13v2h8v-2H8zm0 4v2h5v-2H8z"/></svg>Informe</a>
+          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-4-agente/tarea_4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código</a>
+          <a href="https://github.com/roddyhuarhua-hub/enaho-skills" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Skills ENAHO</a>
         </div>
         <p class="tools">Claude Code · MCP (FastMCP) · API del BCRP · ENAHO 2024 · geopandas</p>
       </div>
@@ -223,12 +233,13 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <p class="qa">Medí el área quemada con imágenes Sentinel-2 (dNBR) y conté cada techo con Google Open Buildings, midiendo la distancia al borde en metros.</p>
         <div class="result">De 13 297 ha quemadas, solo <strong>163</strong> edificaciones quedaron dentro, pero <strong>6 169</strong> estaban a menos de 1 km del borde: 38 veces más. El riesgo está en el borde, no en el centro.</div>
         <div class="plinks">
-          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-incendios-open-buildings/tarea_incendios" target="_blank" rel="noopener">Código y notebook</a>
-          <a href="#videos">Reel</a>
+          <a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-incendios-open-buildings/tarea_incendios" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código y notebook</a>
+          <a href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Reel</a>
         </div>
         <p class="tools">rasterio · geopandas · Sentinel-2 · NASA FIRMS · Google Open Buildings</p>
       </div>
     </article>
+    </div>
   </div>
 </section>
 
@@ -243,14 +254,14 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <h3>Conflictos socioambientales en el Perú</h3>
         <p>59 segundos con los tres hallazgos del dashboard. Fuente: Defensoría del Pueblo.</p>
         <p class="ai-note">Voz generada con IA: es mi propia voz, clonada con Qwen3-TTS.</p>
-        <a class="yt" href="https://www.youtube.com/shorts/gzhIKeo-okw" target="_blank" rel="noopener">Ver en YouTube</a>
+        <a class="yt" href="https://www.youtube.com/shorts/gzhIKeo-okw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Ver en YouTube</a>
       </div>
       <div class="vcard">
         <iframe class="short" src="https://www.youtube-nocookie.com/embed/snFVN_SMCE8" title="Reel: ¿A quién alcanza el fuego?" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         <h3>¿A quién alcanza el fuego?</h3>
         <p>49 segundos: del informe de incendios al reel, con el guion revisado frase por frase.</p>
         <p class="ai-note">Voz generada con IA: es mi propia voz, clonada con Qwen3-TTS.</p>
-        <a class="yt" href="https://www.youtube.com/shorts/snFVN_SMCE8" target="_blank" rel="noopener">Ver en YouTube</a>
+        <a class="yt" href="https://www.youtube.com/shorts/snFVN_SMCE8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Ver en YouTube</a>
       </div>
     </div>
 
@@ -274,7 +285,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
           <h3>Un MCP con los datos de fiscalización ambiental del OEFA</h3>
           <p>¿Inventa Claude cifras del OEFA? Conecté 8 datasets (denuncias SINADA, supervisiones, multas) a Claude Code.</p>
           <p class="num">Sin el servidor acierta 0 de 10 preguntas; con el servidor, 9 de 10.</p>
-          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-4/tarea_4" target="_blank" rel="noopener">Código</a><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/blob/tarea-4/tarea_4/informe.md" target="_blank" rel="noopener">Informe</a></div>
+          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-4/tarea_4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código</a><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/blob/tarea-4/tarea_4/informe.md" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5zM8 13v2h8v-2H8zm0 4v2h5v-2H8z"/></svg>Informe</a></div>
         </div>
       </article>
       <article class="mini">
@@ -283,7 +294,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
           <h3>Tres skills que limpian, grafican y mapean la ENAHO 2024</h3>
           <p>¿Puede un agente limpiar la ENAHO y replicar la pobreza oficial?</p>
           <p class="num">27,6 % de pobreza, igual que el INEI, con 108 664 residentes.</p>
-          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/enaho-skills" target="_blank" rel="noopener">Repositorio</a></div>
+          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/enaho-skills" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Repositorio</a></div>
         </div>
       </article>
       <article class="mini">
@@ -292,7 +303,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
           <h3>Del archivo escaneado al texto buscable: OCR y transcripción de voz</h3>
           <p>Documentos peruanos y entrevistas en audio convertidos en un archivo de texto estructurado.</p>
           <p class="num">Audio transcrito con 4 % de error de palabra (Parakeet) y documentos impresos con 18 % de error de carácter.</p>
-          <div class="plinks"><a href="https://tarea2-roddy.streamlit.app" target="_blank" rel="noopener">App</a><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-2/tarea_2" target="_blank" rel="noopener">Código</a></div>
+          <div class="plinks"><a href="https://tarea2-roddy.streamlit.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2v16h16v2H3V3zm4 10h3v5H7v-5zm5-6h3v11h-3V7zm5 3h3v8h-3v-8z"/></svg>App</a><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-2/tarea_2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código</a></div>
         </div>
       </article>
       <article class="mini">
@@ -301,7 +312,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
           <h3>Clasificador de titulares de La República y El Comercio</h3>
           <p>Un modelo pequeño que clasifica titulares peruanos en política, economía, deportes o ciencia y tecnología.</p>
           <p class="num">F1 de 0,93 en el conjunto de prueba, con dashboard en Streamlit.</p>
-          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-1-clasificador/tarea_1" target="_blank" rel="noopener">Código</a></div>
+          <div class="plinks"><a href="https://github.com/roddyhuarhua-hub/Data-Science-Python/tree/tarea-1-clasificador/tarea_1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Código</a></div>
         </div>
       </article>
     </div>
@@ -319,14 +330,14 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <h3>Percepciones y estrategias de participación en entornos de variación socioeconómica: el proyecto de exploración Palcawanka y la comunidad campesina de Conaicasa (Huancavelica)</h3>
         <p>Con Julio Miguel Tardeo Escobar. Tesis de Maestría en Gerencia Social, mención en Gerencia del Desarrollo Económico Local.</p>
         <p class="num">La mayoría de comuneros percibe cambios positivos, pero la empresa respondió con apoyos puntuales y no con una política de sostenibilidad.</p>
-        <div class="plinks"><a href="https://hdl.handle.net/20.500.12404/28120" target="_blank" rel="noopener">Leer en el repositorio PUCP</a></div>
+        <div class="plinks"><a href="https://hdl.handle.net/20.500.12404/28120" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5zM8 13v2h8v-2H8zm0 4v2h5v-2H8z"/></svg>Leer en el repositorio PUCP</a></div>
       </div></article>
       <article class="mini"><div class="body">
         <span class="tag">Licenciatura en Historia · UNFV · 2023</span>
         <h3>Comunidad campesina de Palca y la empresa Consorcio Minero Horizonte: entre el conflicto socioambiental y el diálogo (2010–2011)</h3>
         <p>Tesis para el título de Licenciado en Historia, Universidad Nacional Federico Villarreal.</p>
         <p class="num">Estudia la relación entre una comunidad de Huancavelica y la empresa minera, del conflicto socioambiental al diálogo.</p>
-        <div class="plinks"><a href="https://hdl.handle.net/20.500.13084/6906" target="_blank" rel="noopener">Leer en el repositorio UNFV</a></div>
+        <div class="plinks"><a href="https://hdl.handle.net/20.500.13084/6906" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5zM8 13v2h8v-2H8zm0 4v2h5v-2H8z"/></svg>Leer en el repositorio UNFV</a></div>
       </div></article>
     </div>
 
