@@ -74,7 +74,8 @@ section h2{font-size:clamp(26px,4vw,32px);margin-bottom:6px}
 /* Videos */
 .videos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .vcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
-.vcard video{width:100%;max-width:320px;aspect-ratio:9/16;margin:0 auto;border-radius:10px;background:#111}
+.vcard .short{width:100%;max-width:320px;aspect-ratio:9/16;height:auto;margin:0 auto;border:0;border-radius:10px;background:#111}
+.vcard .yt{font-size:14px;font-weight:600}
 .vcard h3{font-size:19px;margin:14px 0 6px}
 .vcard p{margin:0 0 6px;color:var(--muted);font-size:15px}
 .ai-note{font-size:13px;color:var(--accent);font-weight:600}
@@ -229,22 +230,18 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
     <p class="lead">Reels de un minuto que cuentan dos de los proyectos. El guion sale del informe y las cifras se verifican contra la fuente antes de narrarse.</p>
     <div class="videos">
       <div class="vcard">
-        <video controls preload="none" playsinline poster="images/reel_conflictos_poster.jpg">
-          <source src="videos/reel_conflictos.mp4" type="video/mp4">
-          Tu navegador no puede reproducir el video. <a href="videos/reel_conflictos.mp4">Descárgalo aquí</a>.
-        </video>
+        <iframe class="short" src="https://www.youtube-nocookie.com/embed/gzhIKeo-okw" title="Reel: conflictos socioambientales en el Perú" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         <h3>Conflictos socioambientales en el Perú</h3>
         <p>59 segundos con los tres hallazgos del dashboard. Fuente: Defensoría del Pueblo.</p>
         <p class="ai-note">Voz generada con IA: es mi propia voz, clonada con Qwen3-TTS.</p>
+        <a class="yt" href="https://www.youtube.com/shorts/gzhIKeo-okw" target="_blank" rel="noopener">Ver en YouTube</a>
       </div>
       <div class="vcard">
-        <video controls preload="none" playsinline poster="images/reel_incendios_poster.jpg">
-          <source src="videos/reel_incendios.mp4" type="video/mp4">
-          Tu navegador no puede reproducir el video. <a href="videos/reel_incendios.mp4">Descárgalo aquí</a>.
-        </video>
+        <iframe class="short" src="https://www.youtube-nocookie.com/embed/snFVN_SMCE8" title="Reel: ¿A quién alcanza el fuego?" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         <h3>¿A quién alcanza el fuego?</h3>
         <p>49 segundos: del informe de incendios al reel, con el guion revisado frase por frase.</p>
         <p class="ai-note">Voz generada con IA: es mi propia voz, clonada con Qwen3-TTS.</p>
+        <a class="yt" href="https://www.youtube.com/shorts/snFVN_SMCE8" target="_blank" rel="noopener">Ver en YouTube</a>
       </div>
     </div>
 
